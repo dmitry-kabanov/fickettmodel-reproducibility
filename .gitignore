@@ -6,6 +6,10 @@ __pycache__
 */_assets/*
 !*/_assets/.gitignore
 
+# Ignore large datasets for time series.
+bifurcation-diagram/_output-cache/N12=1280/*
+bifurcation-diagram/time-series.tar.gz
+
 # Jupyter Notebook internal stuff. 
 */.ipynb_checkpoints/
 
