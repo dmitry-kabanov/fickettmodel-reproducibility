@@ -1,0 +1,23 @@
+saf.fm.common.reactionrate       | I | Reaction rate k (1 - y) exp[theta (sqrt(q) x + q y)]
+saf.fm.common.zndsolver          | I | DCJ: 2.0000000000000000
+saf.fm.common.zndsolver          | I | k: 0.0005732210235144
+saf.fm.common.zndsolver          | I | Reaction length: 24.5087019970023761
+saf.linear.solver                | I | dx=0.050000
+saf.linear.solver                | I | domain_length=25.000000
+saf.linear.solver                | I | Grid resolution is 500
+saf.linear.henrickapproximator   | I | Use Upwind5
+saf.linear.upwind5               | I | Use upwind5_impl_c
+saf.linear.henrickapproximator   | I | Use global Lax-Friedrichs flux
+saf.linear.henrickapproximator   | I | Use NearShockApproximator (Henrick2006 approach)
+saf.fm.common.zndsolver          | I | Starting ZND structure computations
+saf.fm.common.zndsolver          | I | Jacobian evaluations: 0
+saf.fm.common.zndsolver          | I | Compute ZND du_dx for CJ case
+saf.fm.common.zndsolver          | I | Compute partial derivatives of the reaction rate
+saf.fm.common.zndsolver          | I | Finishing ZND structure computations
+saf.fm.linear.problem            | W | for LLF make sure that the eigvals are ordered correctly.
+saf.linear.solver                | I | Time integrator: dopri5
+saf.linear.solver                | I | dt=0.010000
+saf.linear.solver                | I | Start: unsteady computation
+saf.linear.solver                | I | Extending final_time to 100
+saf.linear.solver                | I | Finish: unsteady computation
+saf.linear.solver                | I | Current time == final time
