@@ -1,0 +1,17 @@
+# Python artifacts.
+__pycache__
+*.pyc
+
+# Assets.
+*/_assets/*
+!*/_assets/.gitignore
+
+# Jupyter Notebook internal stuff. 
+*/.ipynb_checkpoints/
+
+# Build directories.
+_build*
+
+# Environment files for zsh-autoenv.
+autoenv-enter.zsh
+autoenv-leave.zsh
