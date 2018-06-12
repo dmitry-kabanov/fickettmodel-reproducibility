@@ -13,8 +13,6 @@ import numpy as np
 
 from lib_bifdiag import get_bifurcation_data
 
-START_TIME = 800
-
 
 def parse_args():
     """Parse command-line arguments."""
@@ -25,6 +23,8 @@ def parse_args():
     p.add_argument('--order', '-o', type=int, default=100,
                    help='How many points on each side to '
                         'consider for determining local extrema')
+    p.add_argument('--start-time', '-t', type=int, default=800,
+                   help='From what time process the time series')
     p.add_argument('--save', '-s', help='Save or show on display',
                    action='store_true')
 
@@ -37,6 +37,7 @@ def plot_bifurcation_diagram(theta_array, bif_data, comparator):
         extrema = bif_data[i]
         thetas = theta * np.ones_like(extrema)
         plt.plot(thetas, extrema, 'k.', markersize=1, rasterized=True)
+        plt.ylim((1.73, 2.07))
 
     plt.xlabel(r'$\theta$')
     plt.ylabel(r'Local %s of $D$' % comparator)
@@ -49,15 +50,16 @@ if __name__ == '__main__':
     N12 = args.N12
     comparator = args.comparator
     order = args.order
+    start_time = args.start_time
     save = args.save
 
-    theta, D = get_bifurcation_data(N12, START_TIME, comparator, order)
+    theta, D = get_bifurcation_data(N12, start_time, comparator, order)
     plot_bifurcation_diagram(theta, D, comparator)
 
     if save:
-        filename = 'bif-diag-N12=%04d-comparator=%s-order=%03d.pdf'
-        filename = filename % (N12, comparator, order)
-        filename = os.path.join('_assets', filename)
-        plt.savefig(filename, dpi=300)
+        fn = 'bif-diag-N12=%04d-comparator=%s-order=%d-start_time=%d.pdf'
+        fn = fn % (N12, comparator, order, start_time)
+        fn = os.path.join('_assets', fn)
+        plt.savefig(fn, dpi=300)
     else:
         plt.show()

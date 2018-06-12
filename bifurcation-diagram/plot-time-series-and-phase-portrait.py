@@ -16,6 +16,7 @@ CUTOFF_TIME = 800
 
 
 p = argparse.ArgumentParser()
+p.add_argument('N12', help='Resolution N_{1/2}', type=int)
 p.add_argument('theta', help='Value of theta', type=float)
 p.add_argument('--with-fft', help='Whether to plot FFT spectrum',
                action='store_true')
@@ -23,6 +24,7 @@ p.add_argument('--with-inset', help='Use inset or not', action='store_true')
 p.add_argument('--save', '-s', help='Save or show on display',
                action='store_true')
 args = p.parse_args()
+N12 = args.N12
 theta = args.theta
 with_inset = args.with_inset
 with_fft = args.with_fft
@@ -30,8 +32,6 @@ with_fft = args.with_fft
 if with_inset and with_fft:
     print('ERROR: cannot use both `with-inset` and `with-fft` flags')
     sys.exit(2)
-
-N12 = 1280
 
 dirname = 'N12=%04d/theta=%.3f' % (N12, theta)
 dirname = os.path.join('_output', dirname)

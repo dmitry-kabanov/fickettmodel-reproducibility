@@ -147,9 +147,11 @@ def get_bif_data_filename(params):
     n12 = params['n12']
     comparator = params['comparator']
     order = params['order']
+    start_time = params['start_time']
     cache_dir = params['cache_dir']
 
-    filename = 'bif-data-N12=%04d-%s-order=%d.npz' % (n12, comparator, order)
+    filename = 'bif-data-N12=%04d-%s-order=%d-start_time=%d.npz'
+    filename = filename % (n12, comparator, order, start_time)
     filename = os.path.join(cache_dir, filename)
 
     return filename
