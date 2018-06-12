@@ -17,6 +17,7 @@ experiments := linear-vs-nonlinear \
                riemann-problem-examples \
                verification-linear-solver \
                verification-nonlinear-solver \
+               verification-nonlinear-limit-cycle \
                normal-modes \
                linear-solutions
 
