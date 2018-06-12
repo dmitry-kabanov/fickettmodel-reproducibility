@@ -16,7 +16,7 @@ experiments := linear-vs-nonlinear \
                znd-solutions \
                riemann-problem-examples \
                verification-linear-solver \
-               verification-nonlinear-solver \
+               verification-nonlinear-steady-state \
                verification-nonlinear-limit-cycle \
                normal-modes \
                linear-solutions
