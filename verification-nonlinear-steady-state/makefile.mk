@@ -1,4 +1,4 @@
-asset  := verification-nonlinear-solver.tex
+asset  := verification-nonlinear-steady-state.tex
 script := generate-verification-table.py
 data   := $(wildcard $(exp)/_output/*/detonation-velocity.npz)
 

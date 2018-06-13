@@ -41,6 +41,6 @@ def generate_table(filename=None):
 if __name__ == '__main__':
     filename = None
     if len(sys.argv) > 1:
-        filename = 'verification-nonlinear-solver.tex'
+        filename = 'verification-nonlinear-steady-state.tex'
         filename = os.path.join('_assets', filename)
     generate_table(filename)

@@ -85,7 +85,7 @@ def get_errors(target_dirs):
 
 
 if __name__ == '__main__':
-    filename = 'verification-nonlinear-solver-limit-cycle.tex'
+    filename = 'verification-nonlinear-limit-cycle.tex'
     filename = os.path.join('_assets', filename)
 
     p = argparse.ArgumentParser(description=__doc__)
