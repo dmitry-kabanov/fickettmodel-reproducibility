@@ -5,7 +5,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
-from helpers import FIGSIZE_LARGE as figsize
+from helpers import FIGSIZE_LARGE as FIGSIZE
 from helpers import savefig
 
 
@@ -51,18 +51,13 @@ def riemannsolver(state_l, state_r, params, x=0.0, t=1):
             return (u_l, lamda_l, -D, s)
 
 
-if __name__ == '__main__':
-    p = argparse.ArgumentParser()
-    p.add_argument('type',
-                   help='Wave type: '
-                        'I Contact and shock, II Contact and rarefaction',
-                   choices=['I', 'II'])
-    args = p.parse_args()
+def plot_riemann_problem(type, ax_1, ax_2, ax_chars):
+    assert type in [1, 2]
 
     q = 9
     D = np.sqrt(q)
 
-    if args.type == 'I':
+    if type == 1:
         state_l = (4, 1)
         state_r = (3, 0.0)
 
@@ -86,12 +81,10 @@ if __name__ == '__main__':
         result = riemannsolver(state_l, state_r, params, x=x_i, t=t)
         soln_u[i] = result[0]
         soln_lamda[i] = result[1]
-        speed_l = result[2]
+        # speed_l = result[2]
         speed_r = result[3]
 
     lw = mpl.rcParams['axes.linewidth']
-    fig, (ax_1, ax_2, ax_chars) = plt.subplots(nrows=3, ncols=1,
-                                               figsize=figsize)
     ax_1.plot(x, soln_u, '-')
     ax_1.set_xlabel(r'$x$')
     ax_1.set_ylabel(r'$u$')
@@ -107,7 +100,7 @@ if __name__ == '__main__':
     # Solution in the "M" region to plot characteristics.
     result = riemannsolver(state_l, state_r, params, x=0, t=t)
     u_m = result[0]
-    lamda_m = result[1]
+    # lamda_m = result[1]
 
     u_l = state_l[0]
     u_r = state_r[0]
@@ -175,8 +168,8 @@ if __name__ == '__main__':
         # `char_x` and `char_t` contain characteristics information.
         chars_x = [[x] for x in x_0_list]
         chars_t = [[0] for x in x_0_list]
-        s_head = speed_r
-        s_tail = u_m - D
+        # s_head = speed_r
+        # s_tail = u_m - D
         for i, x_0 in enumerate(x_0_list):
             if x_0 < 0.0:
                 # Collision time with the contact.
@@ -226,11 +219,13 @@ if __name__ == '__main__':
         ax_chars.set_xlabel(r'$x$')
         ax_chars.set_ylabel(r'$t$')
 
-        fig.tight_layout(pad=0.1)
 
-    if args.type == 'I':
-        fn = 'solution-contact-shock.pdf'
-        savefig(fn)
-    else:
-        fn = 'solution-contact-rarefaction.pdf'
-        savefig(fn)
+if __name__ == '__main__':
+    fig, axes = plt.subplots(nrows=3, ncols=2, figsize=FIGSIZE)
+
+    plot_riemann_problem(1, axes[0, 0], axes[1, 0], axes[2, 0])
+    plot_riemann_problem(2, axes[0, 1], axes[1, 1], axes[2, 1])
+
+    fig.tight_layout(pad=0.1)
+
+    savefig('riemann-problem.pdf')
