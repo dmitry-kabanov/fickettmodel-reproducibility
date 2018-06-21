@@ -4,8 +4,6 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-from saf.fm.linear import Reader
-
 from helpers import FIGSIZE_TWO_SUBPLOTS_TWO_ROWS as figsize
 from helpers import savefig
 
@@ -108,51 +106,18 @@ print(msg.format(theta_values[0], conjugate_rates[0], freq_0[0], fmt=FMT))
 msg = 'For theta_max={:{fmt}} rate={:{fmt}}, freq={:{fmt}}'
 print(msg.format(theta_values[-1], conjugate_rates[-1], freq_0[-1], fmt=FMT))
 
-#for i, __ in enumerate(exponential_rates_upper):
-#    if (exponential_rates_upper[i] is not None and
-#            exponential_rates_upper[i+1] is None):
-#        q_crit = theta_values[i+1]
-#        msg = 'Switch to purely exponential mode at q_2={:{fmt}}'
-#        print(msg.format(q_crit, fmt=FMT))
-#        break
-#
-#rates_1 = other_rates[1, :]
-#for i, __ in enumerate(rates_1):
-#    if rates_1[i] > 0.0 and rates_1[i+1] < 0.0:
-#        if np.abs(rates_1[i]) > np.abs(rates_1[i+1]):
-#            q_crit = q_values[i+1]
-#        else:
-#            q_crit = q_values[i]
-#
-#        msg = 'Mode 1 becomes unstable at q_2={:{fmt}}'
-#        print(msg.format(q_crit, fmt=FMT))
-#        break
-
 # Plotting.
 fig, (ax_1, ax_2) = plt.subplots(2, 1, figsize=figsize)
 ax_1.plot(theta_values, conjugate_rates, '-', label='Mode 0')
-#ax_1.plot(theta_values, exponential_rates_bottom, '-')
-#ax_1.plot(theta_values, exponential_rates_upper, '-')
-#ax_1.plot(theta_values, other_rates[1, :], '--', label='Mode 1')
-#ax_1.plot(theta_values, other_rates[2, :], '--', label='Mode 2')
-#ax_1.plot(theta_values, other_rates[3, :], '--', label='Mode 3')
-#ax_1.plot(theta_values, other_rates[4, :], '--', label='Mode 4')
-#ax_1.plot(theta_values, other_rates[5, :], '--', label='Mode 5')
 ax_1.set_xlim(theta_range)
 ax_1.set_xlabel(r'Activation energy $\theta$')
 ax_1.set_ylabel(r'Growth rate $\alpha_{\mathrm{re}}$')
 
 ax_2.plot(theta_values, freq_0, '-', label='Mode 0')
-ax_2.plot(theta_values, other_freqs[1, :], '--', label='Mode 1')
-ax_2.plot(theta_values, other_freqs[2, :], '--', label='Mode 2')
-ax_2.plot(theta_values, other_freqs[3, :], '--', label='Mode 3')
-ax_2.plot(theta_values, other_freqs[4, :], '--', label='Mode 4')
-ax_2.plot(theta_values, other_freqs[5, :], '--', label='Mode 5')
 ax_2.set_xlim(theta_range)
 ax_2.set_xlabel(r'Activation energy $\theta$')
 ax_2.set_ylabel(r'Frequency $\alpha_{\mathrm{im}}$')
 
 fig.tight_layout(pad=0.1)
 
-outfile = 'linear-spectrum.pdf'
-savefig(outfile)
+savefig('linear-spectrum.pdf')
