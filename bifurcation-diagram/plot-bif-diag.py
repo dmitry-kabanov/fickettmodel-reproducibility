@@ -1,22 +1,24 @@
 #!/usr/bin/env python
-"""Plot bifurcation diagram.
+"""Plot the bifurcation diagram.
 
 Bifurcation data are obtained by extracting local extrema from the time series.
-We also cache data to avoid rereading time series multiple times.
+We also cache data to avoid rereading the time series multiple times.
 
 """
 import argparse
-import os
 
 import matplotlib.pyplot as plt
 import numpy as np
+
+from helpers import FIGSIZE_LARGER as FIGSIZE
+from helpers import savefig
 
 from lib_bifdiag import get_bifurcation_data
 
 
 def parse_args():
     """Parse command-line arguments."""
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('N12', help='Resolution', type=int)
     p.add_argument('--comparator', '-c', help='Min or max comparator',
                    choices=['minima', 'maxima'], default='minima')
@@ -32,7 +34,7 @@ def parse_args():
 
 
 def plot_bifurcation_diagram(theta_array, bif_data, comparator):
-    plt.figure()
+    plt.figure(figsize=FIGSIZE)
     for i, theta in enumerate(theta_array):
         extrema = bif_data[i]
         thetas = theta * np.ones_like(extrema)
@@ -56,10 +58,6 @@ if __name__ == '__main__':
     theta, D = get_bifurcation_data(N12, start_time, comparator, order)
     plot_bifurcation_diagram(theta, D, comparator)
 
-    if save:
-        fn = 'bif-diag-N12=%04d-comparator=%s-order=%d-start_time=%d.pdf'
-        fn = fn % (N12, comparator, order, start_time)
-        fn = os.path.join('_assets', fn)
-        plt.savefig(fn, dpi=300)
-    else:
-        plt.show()
+    fn = 'bif-diag-N12=%04d-comparator=%s-order=%d-start_time=%d.pdf'
+    fn = fn % (N12, comparator, order, start_time)
+    savefig(fn, dpi=300)
