@@ -16,7 +16,7 @@ FIGSIZE_SIX_SUBPLOTS = (6.0, 8.0)
 # Figure size for a large figure that takes ~100 % of text width.
 FIGSIZE_LARGE = (6.0, 4.0)
 # Figure size for time series with phase portraits.
-FIGSIZE_TIME_SERIES_WITH_PHASE_PORTRAIT = (6.0, 8.0)
+FIGSIZE_TIME_SERIES_WITH_PHASE_PORTRAIT = (1.9, 4.0)
 
 TARGET_DIR = '_assets'
 

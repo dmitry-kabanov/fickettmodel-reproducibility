@@ -10,7 +10,7 @@ $(BUILD_DIR)/$(asset_1) : $(exp)/_assets/$(asset_1)
 
 $(exp)/_assets/$(asset_1) : $(exp)/$(script_1)
 	cd ${<D} && \
-	python ${<F} 1280 --comparator=minima --order=1 --start-time=900 --save
+	python ${<F} 1280 --comparator=minima --order=1 --start-time=900
 
 $(exp)/$(script_1) : $(data_1) $(exp)/lib_bifdiag.py
 
@@ -38,7 +38,7 @@ $(exp) : $(BUILD_DIR)/$(asset_2)
 $(BUILD_DIR)/$(asset_2) : $(exp)/_assets/$(asset_2)
 
 $(exp)/_assets/$(asset_2) : $(exp)/$(script)
-	cd ${<D} && python ${<F} 1280 0.950 --save
+	cd ${<D} && python ${<F} 1280 0.950
 
 $(exp)/$(script) : $(data_2)
 
@@ -49,7 +49,7 @@ $(exp) : $(BUILD_DIR)/$(asset_3)
 $(BUILD_DIR)/$(asset_3) : $(exp)/_assets/$(asset_3)
 
 $(exp)/_assets/$(asset_3) : $(exp)/$(script)
-	cd ${<D} && python ${<F} 1280 1.000 --save
+	cd ${<D} && python ${<F} 1280 1.000
 
 $(exp)/$(script) : $(data_3)
 
@@ -60,7 +60,7 @@ $(exp) : $(BUILD_DIR)/$(asset_4)
 $(BUILD_DIR)/$(asset_4) : $(exp)/_assets/$(asset_4)
 
 $(exp)/_assets/$(asset_4) : $(exp)/$(script)
-	cd ${<D} && python ${<F} 1280 1.004 --save
+	cd ${<D} && python ${<F} 1280 1.004
 
 $(exp)/$(script) : $(data_4)
 
@@ -71,7 +71,7 @@ $(exp) : $(BUILD_DIR)/$(asset_5)
 $(BUILD_DIR)/$(asset_5) : $(exp)/_assets/$(asset_5)
 
 $(exp)/_assets/$(asset_5) : $(exp)/$(script)
-	cd ${<D} && python ${<F} 1280 1.055 --with-inset --save
+	cd ${<D} && python ${<F} 1280 1.055 --with-inset
 
 $(exp)/$(script) : $(data_5)
 
@@ -82,7 +82,7 @@ $(exp) : $(BUILD_DIR)/$(asset_6)
 $(BUILD_DIR)/$(asset_6) : $(exp)/_assets/$(asset_6)
 
 $(exp)/_assets/$(asset_6) : $(exp)/$(script)
-	cd ${<D} && python ${<F} 1280 1.065 --with-inset --save
+	cd ${<D} && python ${<F} 1280 1.065 --with-inset
 
 $(exp)/$(script) : $(data_6)
 
@@ -93,7 +93,7 @@ $(exp) : $(BUILD_DIR)/$(asset_7)
 $(BUILD_DIR)/$(asset_7) : $(exp)/_assets/$(asset_7)
 
 $(exp)/_assets/$(asset_7) : $(exp)/$(script)
-	cd ${<D} && python ${<F} 1280 1.089 --with-inset --save
+	cd ${<D} && python ${<F} 1280 1.089 --with-inset
 
 $(exp)/$(script) : $(data_7)
 

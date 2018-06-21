@@ -10,9 +10,12 @@ import numpy as np
 
 from matplotlib import ticker
 
+from helpers import FIGSIZE_TIME_SERIES_WITH_PHASE_PORTRAIT as FIGSIZE
+from helpers import savefig
+
 from lib_timeseries import movingaverage, compute_fft
 
-CUTOFF_TIME = 800
+CUTOFF_TIME = 900
 
 
 p = argparse.ArgumentParser()
@@ -21,9 +24,8 @@ p.add_argument('theta', help='Value of theta', type=float)
 p.add_argument('--with-fft', help='Whether to plot FFT spectrum',
                action='store_true')
 p.add_argument('--with-inset', help='Use inset or not', action='store_true')
-p.add_argument('--save', '-s', help='Save or show on display',
-               action='store_true')
 args = p.parse_args()
+
 N12 = args.N12
 theta = args.theta
 with_inset = args.with_inset
@@ -87,7 +89,7 @@ if with_fft:
 if theta == 0.950:
     label_x_coord = 0.0
 
-fig, ax = plt.subplots(nrows=nrows, ncols=1, figsize=(6, 8))
+fig, ax = plt.subplots(nrows=nrows, ncols=1, figsize=FIGSIZE)
 ax[0].plot(t_window, D_window, '-')
 ax[0].set_xlabel(r'$t$')
 ax[0].set_ylabel(r'$D$')
@@ -124,9 +126,5 @@ if with_inset:
     plt.xlim((1.8, 2.5))
     plt.ylim((-1, 1))
 
-if args.save:
-    filename = 'analysis-theta=%.3f.pdf' % theta
-    filename = os.path.join('_assets', filename)
-    plt.savefig(filename, dpi=300)
-else:
-    plt.show()
+filename = 'analysis-theta=%.3f.pdf' % theta
+savefig(filename, dpi=300)
