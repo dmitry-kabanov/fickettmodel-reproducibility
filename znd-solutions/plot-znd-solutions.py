@@ -3,6 +3,7 @@
 import os
 
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 from saf.fm.linear import Reader
 
@@ -35,6 +36,7 @@ fig, (ax1, ax2) = plt.subplots(nrows=2, ncols=1, figsize=figsize)
 ax1.set_xlim(x_range)
 ax1.set_xlabel(r'$x$')
 ax1.set_ylabel(r'$\bar u$')
+ax1.yaxis.set_major_formatter(ticker.StrMethodFormatter('{x}'))
 
 ax2.set_xlim(x_range)
 ax2.set_xlabel(r'$x$')
@@ -47,7 +49,6 @@ for i, datum in enumerate(data):
     ax1.plot(datum['x'], datum['u'], styles[i], label=label)
     ax2.plot(datum['x'], datum['lamda'], styles[i])
 
-ax1.legend(loc='best')
 fig.tight_layout(pad=0.1)
 
 filename = 'znd-solutions.pdf'
