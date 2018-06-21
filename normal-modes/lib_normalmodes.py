@@ -296,7 +296,7 @@ class CarpetAnalyzer(object):
         H = self._H
         idx = self._idx
 
-        fig, ax = plt.subplots(1, 1)
+        fig, ax = plt.subplots(1, 1, figsize=figsize)
         mappable = ax.contourf(alpha_re, alpha_im, log(1 + H.T), 20)
 
         for i in range(len(idx[0])):
@@ -319,7 +319,7 @@ class CarpetAnalyzer(object):
 
         ALPHA_RE, ALPHA_IM = np.meshgrid(alpha_re, alpha_im)
 
-        fig = plt.figure()
+        fig = plt.figure(figsize=figsize)
         ax = fig.gca(projection=Axes3D.name)
         ax.plot_surface(ALPHA_RE, ALPHA_IM, log(1 + H.T))
 
