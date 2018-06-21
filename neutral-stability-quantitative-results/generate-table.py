@@ -60,7 +60,7 @@ def generate_table(filename=None):
     numbers = np.arange(1, len(q_list)+1)
 
     param_format = r'\num{{{:.2f}}}'
-    value_format = '{:.6f}'
+    value_format = '{:.3f}'
 
     columns = [numbers, q_list, theta_list, freq_list]
 
