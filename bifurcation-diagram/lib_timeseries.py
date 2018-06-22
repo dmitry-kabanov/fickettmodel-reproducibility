@@ -1,4 +1,6 @@
 """Collection of functions used to postprocess time series."""
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -14,6 +16,59 @@ def movingaverage(x, N):
     result[:N-1] = x[:N-1]
 
     return result
+
+
+def get_data(n12, theta, cutoff_time):
+    """Get a late-time window of time series and phase-portrait data.
+
+    Parameters
+    ----------
+    n12 : int
+        Resolution.
+    theta : float
+        Activation energy.
+    cutoff_time : int
+        Time from which the window of time series is return.
+
+    Returns
+    -------
+    t_window, D_window : ndarray
+        Time and detonation velocity starting with time `cutoff_time`.
+    D_smooth : ndarray
+        Full sequence of detonation velocity smoothg with the moving-average
+        algorithm.
+    dD_dt : ndarray
+        Full sequence of the acceleration of detonation velocity evaluated
+        numerically.
+
+    """
+    dirname = os.path.join('N12=%04d/theta=%.3f' % (n12, theta))
+    dirname = os.path.join('_output-cache', dirname)
+    filename = os.path.join(dirname, 'detonation-velocity.npz')
+
+    with np.load(filename) as data:
+        t, d = data['t'], data['d']
+
+    cond = t >= cutoff_time
+
+    t_window = t[cond]
+    D_window = d[cond]
+
+    tw = t
+    dw = d
+
+    dw = movingaverage(dw, 11)
+    D_smooth = dw
+
+    assert len(dw) == len(d)
+
+    dD_dt = np.empty_like(dw)
+    dD_dt[1:] = (dw[1:] - dw[:-1]) / (tw[1:] - tw[:-1])
+    dD_dt[0] = 0.0
+
+    dD_dt = movingaverage(dD_dt, 5)
+
+    return t_window, D_window, D_smooth, dD_dt
 
 
 def compute_fft(t, D, freq_ub=1):

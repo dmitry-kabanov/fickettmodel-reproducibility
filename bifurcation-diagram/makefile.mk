@@ -14,6 +14,21 @@ $(exp)/_assets/$(asset_1) : $(exp)/$(script_1)
 
 $(exp)/$(script_1) : $(data_1) $(exp)/lib_bifdiag.py
 
+
+asset_2 := time-series-and-phase-portraits-together.pdf
+script_2 := plot-time-series-and-phase-portraits-together.py
+data_2   := $(wildcard $(exp)/_output-cache/N12=1280/*/detonation-velocity.npz)
+
+$(exp) : $(BUILD_DIR)/$(asset_2)
+
+$(BUILD_DIR)/$(asset_2) : $(exp)/_assets/$(asset_2)
+
+$(exp)/_assets/$(asset_2) : $(exp)/$(script_2)
+	cd ${<D} && python ${<F}
+
+$(exp)/$(script_2) : $(data_2) $(exp)/lib_timeseries.py
+
+
 script := plot-time-series-and-phase-portrait.py
 
 $(exp)/$(script) : $(exp)/lib_timeseries.py
