@@ -32,15 +32,20 @@ for d in dirs:
 
 x_range = (-15, 0)
 
+coord_x = 0.05
+coord_y = 0.70
+
 fig, (ax1, ax2) = plt.subplots(nrows=2, ncols=1, figsize=figsize)
 ax1.set_xlim(x_range)
 ax1.set_xlabel(r'$x$')
 ax1.set_ylabel(r'$\bar u$')
 ax1.yaxis.set_major_formatter(ticker.StrMethodFormatter('{x}'))
+ax1.text(coord_x, coord_y, 'a', transform=ax1.transAxes)
 
 ax2.set_xlim(x_range)
 ax2.set_xlabel(r'$x$')
 ax2.set_ylabel(r'$\bar \lambda$')
+ax2.text(coord_x, coord_y, 'b', transform=ax2.transAxes)
 
 styles = ['-', '--', '-.', ':']
 

@@ -132,6 +132,8 @@ theta_clean = np.array(theta_list[idx])
 freq_clean = np.array(freq_list[idx])
 
 # Plot figure.
+coord_x = 0.10
+coord_y = 0.80
 fig, (ax_1, ax_2) = plt.subplots(nrows=1, ncols=2, figsize=figsize)
 fig.canvas.mpl_connect('button_press_event', onclick_1)
 fig.canvas.mpl_connect('button_press_event', onclick_2)
@@ -139,6 +141,7 @@ ax_1.plot(theta_clean, q_clean, '-')
 line_1_onclicks, = ax_1.plot([], 'ro')
 ax_1.set_xlabel(r'Activation energy $\theta$')
 ax_1.set_ylabel(r'Heat release $q$')
+ax_1.text(coord_x, coord_y, 'a', transform=ax_1.transAxes)
 ax_1.grid()
 
 # ax_2.plot(freq_clean, q_clean, '-')
@@ -147,6 +150,7 @@ line_2_onclicks, = ax_2.plot([], 'ro')
 # ax_2.set_xlabel(r'Frequency $\alpha_{\mathrm{im}}$')
 ax_2.set_xlabel(r'Activation energy $\theta$')
 ax_2.set_ylabel(r'$q \theta$')
+ax_2.text(coord_x, coord_y, 'b', transform=ax_2.transAxes)
 ax_2.grid()
 
 fig.tight_layout(pad=0.1)

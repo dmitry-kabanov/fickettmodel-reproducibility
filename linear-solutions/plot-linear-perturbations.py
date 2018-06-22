@@ -20,23 +20,38 @@ x_1, u_1, lamda_1 = data_1[:, 0], data_1[:, 1], data_1[:, 2]
 data_2 = np.loadtxt(os.path.join(dir_2, 'profiles', profile_name))
 x_2, u_2, lamda_2 = data_2[:, 0], data_2[:, 1], data_2[:, 2]
 
-fig, ax = plt.subplots(nrows=2, ncols=2, figsize=figsize)
+fig, axes = plt.subplots(nrows=2, ncols=2, figsize=figsize)
+coord_x = 0.05
+coord_y = 0.80
+x_range = (int(x_1[0]), int(x_1[-1]))
 
-ax[0, 0].plot(x_1, u_1, '-')
-ax[0, 0].set_xlabel(r'$x$')
-ax[0, 0].set_ylabel(r"$u '$")
+ax = axes[0, 0]
+ax.plot(x_1, u_1, '-')
+ax.set_xlabel(r'$x$')
+ax.set_ylabel(r"$u '$")
+ax.set_xlim(x_range)
+ax.text(coord_x, coord_y, 'a', transform=ax.transAxes)
 
-ax[0, 1].plot(x_2, u_2, '-')
-ax[0, 1].set_xlabel(r'$x$')
-ax[0, 1].set_ylabel(r"$u '$")
+ax = axes[0, 1]
+ax.plot(x_2, u_2, '-')
+ax.set_xlabel(r'$x$')
+ax.set_ylabel(r"$u '$")
+ax.set_xlim(x_range)
+ax.text(coord_x, coord_y, 'b', transform=ax.transAxes)
 
-ax[1, 0].plot(x_1, lamda_1, '-')
-ax[1, 0].set_xlabel(r'$x$')
-ax[1, 0].set_ylabel(r"$\lambda '$")
+ax = axes[1, 0]
+ax.plot(x_1, lamda_1, '-')
+ax.set_xlabel(r'$x$')
+ax.set_ylabel(r"$\lambda '$")
+ax.set_xlim(x_range)
+ax.text(coord_x, coord_y, 'c', transform=ax.transAxes)
 
-ax[1, 1].plot(x_2, lamda_2, '-')
-ax[1, 1].set_xlabel(r'$x$')
-ax[1, 1].set_ylabel(r"$\lambda '$")
+ax = axes[1, 1]
+ax.plot(x_2, lamda_2, '-')
+ax.set_xlabel(r'$x$')
+ax.set_ylabel(r"$\lambda '$")
+ax.set_xlim(x_range)
+ax.text(coord_x, coord_y, 'd', transform=ax.transAxes)
 
 fig.tight_layout(pad=0.1)
 

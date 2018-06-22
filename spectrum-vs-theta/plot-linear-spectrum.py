@@ -107,16 +107,20 @@ msg = 'For theta_max={:{fmt}} rate={:{fmt}}, freq={:{fmt}}'
 print(msg.format(theta_values[-1], conjugate_rates[-1], freq_0[-1], fmt=FMT))
 
 # Plotting.
+coord_x = 0.05
+coord_y = 0.70
 fig, (ax_1, ax_2) = plt.subplots(2, 1, figsize=figsize)
 ax_1.plot(theta_values, conjugate_rates, '-', label='Mode 0')
 ax_1.set_xlim(theta_range)
 ax_1.set_xlabel(r'Activation energy $\theta$')
 ax_1.set_ylabel(r'Growth rate $\alpha_{\mathrm{re}}$')
+ax_1.text(coord_x, coord_y, 'a', transform=ax_1.transAxes)
 
 ax_2.plot(theta_values, freq_0, '-', label='Mode 0')
 ax_2.set_xlim(theta_range)
 ax_2.set_xlabel(r'Activation energy $\theta$')
 ax_2.set_ylabel(r'Frequency $\alpha_{\mathrm{im}}$')
+ax_2.text(coord_x, coord_y, 'b', transform=ax_2.transAxes)
 
 fig.tight_layout(pad=0.1)
 
