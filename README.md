@@ -1,3 +1,5 @@
+https://zenodo.org/badge/DOI/10.5281/zenodo.1297175.svg
+
 # Reproducibility package for the paper on the Fickett model
 
 This is a reproducibility repository for paper on the Fickett model submitted
