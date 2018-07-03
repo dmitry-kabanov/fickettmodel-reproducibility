@@ -51,7 +51,7 @@ def riemannsolver(state_l, state_r, params, x=0.0, t=1):
             return (u_l, lamda_l, -D, s)
 
 
-def plot_riemann_problem(type, ax_1, ax_2, ax_chars):
+def plot_riemann_problem(type, ax_1, ax_2, ax_chars, label):
     assert type in [1, 2]
 
     q = 9
@@ -93,6 +93,9 @@ def plot_riemann_problem(type, ax_1, ax_2, ax_chars):
     ax_2.set_xlabel(r'$x$')
     ax_2.set_ylabel(r'$\lambda$')
     ax_2.set_xlim((x_l, x_r))
+
+    # Set label.
+    ax_1.text(0.05, 0.8, label, transform=ax_1.transAxes)
 
     # ---------------------
     # Plot characteristics
@@ -223,8 +226,8 @@ def plot_riemann_problem(type, ax_1, ax_2, ax_chars):
 if __name__ == '__main__':
     fig, axes = plt.subplots(nrows=3, ncols=2, figsize=FIGSIZE)
 
-    plot_riemann_problem(1, axes[0, 0], axes[1, 0], axes[2, 0])
-    plot_riemann_problem(2, axes[0, 1], axes[1, 1], axes[2, 1])
+    plot_riemann_problem(1, axes[0, 0], axes[1, 0], axes[2, 0], 'a')
+    plot_riemann_problem(2, axes[0, 1], axes[1, 1], axes[2, 1], 'b')
 
     fig.tight_layout(pad=0.1)
 
