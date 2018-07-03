@@ -302,7 +302,7 @@ class CarpetAnalyzer(object):
         for i in range(len(idx[0])):
             x = alpha_re[idx[0][i]]
             y = alpha_im[idx[1][i]]
-            ax.plot(x, y, 'ro')
+            ax.plot(x, y, 'ko')
 
         ax.set_xlabel(r'$\alpha_\mathrm{re}$')
         ax.set_ylabel(r'$\alpha_\mathrm{im}$')
