@@ -37,7 +37,12 @@ Alternatively, you can get Python and the libraries from other places.
 In this case, you need Python 3.6.3, NumPy 1.13.3, SciPy 0.19.1, and Matplotlib
 2.1.0, which can be installed in a `conda` environment with the command
 
-    conda create -n ficketmodel-reproducibility "python==3.6.3" "numpy==1.13.3" "scipy==0.19.1" "matplotlib==2.1.0" pyqt
+    conda create -n ficketmodel-reproducibility \
+        "python==3.6.3" \
+        "numpy==1.13.3" \
+        "scipy==0.19.1" \
+        "matplotlib==2.1.0" \
+        pyqt
 
 and then activated with the command
 
