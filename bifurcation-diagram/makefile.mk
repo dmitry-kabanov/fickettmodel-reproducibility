@@ -4,7 +4,20 @@ data_1   := $(exp)/_output-cache/bif-data-N12=1280-minima-order=1-start_time=900
 
 asset_list += $(exp)/_assets/$(asset_1)
 
-$(exp) : $(BUILD_DIR)/$(asset_1)
+asset_2  := time-series-and-phase-portraits-together.pdf
+script_2 := plot-time-series-and-phase-portraits-together.py
+data_2   := $(exp)/_output-cache/N12=1280/theta=0.950/detonation-velocity.npz \
+            $(exp)/_output-cache/N12=1280/theta=1.000/detonation-velocity.npz \
+            $(exp)/_output-cache/N12=1280/theta=1.004/detonation-velocity.npz \
+            $(exp)/_output-cache/N12=1280/theta=1.055/detonation-velocity.npz \
+            $(exp)/_output-cache/N12=1280/theta=1.065/detonation-velocity.npz \
+            $(exp)/_output-cache/N12=1280/theta=1.089/detonation-velocity.npz
+
+
+asset_list += $(exp)/_assets/$(asset_2)
+
+$(exp) : $(BUILD_DIR)/$(asset_1) $(BUILD_DIR)/$(asset_2)
+
 
 $(BUILD_DIR)/$(asset_1) : $(exp)/_assets/$(asset_1)
 
@@ -15,9 +28,6 @@ $(exp)/_assets/$(asset_1) : $(exp)/$(script_1)
 $(exp)/$(script_1) : $(data_1) $(exp)/lib_bifdiag.py
 
 
-asset_2 := time-series-and-phase-portraits-together.pdf
-script_2 := plot-time-series-and-phase-portraits-together.py
-data_2   := $(wildcard $(exp)/_output-cache/N12=1280/*/detonation-velocity.npz)
 
 $(exp) : $(BUILD_DIR)/$(asset_2)
 
@@ -28,7 +38,7 @@ $(exp)/_assets/$(asset_2) : $(exp)/$(script_2)
 
 $(exp)/$(script_2) : $(data_2) $(exp)/lib_timeseries.py
 
-$(data_2) $(data_3) $(data_4) $(data_5) $(data_6) $(data_7) : $(exp)/time-series.tar.gz
+$(data_2) : $(exp)/time-series.tar.gz
 	# Extract archive.
 	tar xf $< -C $(<D)
 	# Update timestamps of all extracted data to avoid multiple extractions.
