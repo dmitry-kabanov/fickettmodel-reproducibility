@@ -70,3 +70,37 @@ values of activation energy.
 
 
 # Description of the experiments
+
+**bifurcation diagram**. Creates figures of the bifurcation diagram and
+examples of time series with corresponding phase portraits of detonation
+velocity.
+
+**linear-solutions**. Creates figures of perturbations of the linearized system
+and time series of detonation velocity.
+
+**linear-vs-nonlinear** Creates a figures that shows the differences between
+the behaviour of the linearized and nonlinear systems.
+
+**neutral-stability-quantitative-results**. Creates a table with the data
+about critical activation energy against heat release.
+
+**neutral-stability**.  Creates a figures of the neutral stability curve.
+
+**normal-modes**. Creates figures related to the normal-mode analysis.
+
+**riemann-problem-examples**. Creates figures with the examples of the Riemann
+problem solutions.
+
+**spectrum-vs-theta**. Plots linear stability spectrum as activation energy
+changes.
+
+**verification-linear-solver**. Creates a table with the results of the
+convergence study for the linear solver.
+
+**verification-nonlinear-limit-cycle**. Creates a table with the results of the
+convergence study for the nonlinear solver with the limit-cycle solution.
+
+**verification-nonlinear-steady-state**. Creates a table with the results of
+the convergence-study for the nonlinear solver with the steady-state solution.
+
+**znd-solutions**. Creates a figures of the ZND (steady-state) solutions.
