@@ -1,0 +1,1 @@
+LICENSE Makefile README.md __pycache__ _build bifurcation-diagram code config.mk helpers.py linear-solutions linear-vs-nonlinear matplotlibrc neutral-stability neutral-stability-quantitative-results normal-modes riemann-problem-examples spectrum-vs-theta verification-linear-solver verification-nonlinear-limit-cycle verification-nonlinear-steady-state znd-solutions
