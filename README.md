@@ -1,4 +1,4 @@
-![Link to the latest release on Zenodo.org](https://zenodo.org/badge/DOI/10.5281/zenodo.1297175.svg)
+[![DOI](https://zenodo.org/badge/136746577.svg)](https://zenodo.org/badge/latestdoi/136746577)
 
 # Reproducibility package for the paper on the Fickett model
 
