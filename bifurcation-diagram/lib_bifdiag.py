@@ -55,7 +55,7 @@ def get_simulation_data(params):
 
     # If there is cache file with simulation data, then use data from it.
     if os.path.isfile(cache_file):
-        with np.load(cache_file) as data:
+        with np.load(cache_file, allow_pickle=True) as data:
             theta = data['theta']
             D = data['D']
 
@@ -136,7 +136,7 @@ def save_bifurcation_data(bif_data, params):
 
 def load_bifurcation_data(params):
     cache_file = get_bif_data_filename(params)
-    with np.load(cache_file) as data:
+    with np.load(cache_file, allow_pickle=True) as data:
         theta = data['theta']
         extrema = data['extrema']
 
