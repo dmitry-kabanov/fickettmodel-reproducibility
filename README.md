@@ -32,12 +32,23 @@ and change current directory to the repository directory:
 
 Besides, you need Python along with several scientific libraries, such as
 NumPy, SciPy, and Matplotlib.
-We recommend to use Anaconda Python distribution 5.0 to achieve this, as we
-used it ourselves for development of this package.
-It can be downloaded from `https://repo.continuum.io/archive/`.
-Alternatively, you can get Python and the libraries from other places.
-In this case, you need Python 3.6.3, NumPy 1.13.3, SciPy 0.19.1, and Matplotlib
-2.1.0, which can be installed in a `conda` environment with the command
+
+The `conda` environment with the current dependencies versions
+can be created using command
+
+    conda env create --name fickettmodel-reproducibility -f environment.yml
+
+and then activated using command
+
+    conda activate fickettmodel-reproducibility
+
+### Exact versions used to make this reproducibility package
+
+The active development of this reproducibility package happend in 2018.
+It was developed on Ubuntu 16.04.
+
+The `conda` environment with the exact dependencies versions
+can be created using command
 
     conda create -n fickettmodel-reproducibility \
         "python==3.6.3" \
@@ -46,7 +57,7 @@ In this case, you need Python 3.6.3, NumPy 1.13.3, SciPy 0.19.1, and Matplotlib
         "matplotlib==2.1.0" \
         pyqt
 
-and then activated with the command
+and then activated using command
 
     conda activate fickettmodel-reproducibility
 
