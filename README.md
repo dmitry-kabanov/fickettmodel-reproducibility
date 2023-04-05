@@ -1,15 +1,17 @@
 [![DOI](https://zenodo.org/badge/136746577.svg)](https://zenodo.org/badge/latestdoi/136746577)
+[![Build on Python x OS matrix](https://github.com/dmitry-kabanov/fickettmodel-reproducibility/actions/workflows/build.yml/badge.svg)](https://github.com/dmitry-kabanov/fickettmodel-reproducibility/actions/workflows/build.yml)
 
 # Reproducibility package for the paper on the Fickett model
 
 This is a reproducibility repository for the paper
-[*A minimal hyperbolic system for unstable shock waves*][1]
-on the Fickett model published in *Communications in Nonlinear Science and Numerical Simulation*
+[_A minimal hyperbolic system for unstable shock waves_][1]
+on the Fickett model published in _Communications in Nonlinear Science and Numerical Simulation_
 and authored by Dmitry Kabanov (me) and Aslan Kasimov.
 
 [1]: https://doi.org/10.1016/j.cnsns.2018.10.022
 
 # Installation
+
 This package was developed under Ubuntu 16.04 and should work under other
 flavors of Unix without any modification (macOS, Centos, Fedora, and so on).
 Using this package under Windows operating system may or may not work as it
@@ -68,7 +70,6 @@ downloading ~500 MB of datasets from Zenodo.org.
 These datasets contain raw time series of detonation velocity for various
 values of activation energy.
 
-
 # Description of the experiments
 
 **bifurcation diagram**. Creates figures of the bifurcation diagram and
@@ -84,7 +85,7 @@ the behaviour of the linearized and nonlinear systems.
 **neutral-stability-quantitative-results**. Creates a table with the data
 about critical activation energy against heat release.
 
-**neutral-stability**.  Creates a figures of the neutral stability curve.
+**neutral-stability**. Creates a figures of the neutral stability curve.
 
 **normal-modes**. Creates figures related to the normal-mode analysis.
 
