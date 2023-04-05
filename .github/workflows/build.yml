@@ -1,0 +1,41 @@
+name: Build on Python x OS matrix
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, macos-11.0]
+        python-version: ["3.6", "3.10"]
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        lfs: true
+
+    - name: Checkout LFS objects
+      run: git lfs checkout
+
+    - name: Setup conda environment
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+        environment-file: environment.yml
+
+    - name: Show info
+      run: |
+        conda activate test
+        conda info
+        type python
+        type pip
+
+    - name: Run make
+      run: make BUILD_DIR=_build
+
